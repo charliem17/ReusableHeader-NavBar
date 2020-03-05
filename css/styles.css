@@ -1,0 +1,121 @@
+@font-face {
+  font-family: 'Oxanium';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Oxanium Regular'), local('Oxanium-Regular'), url(https://fonts.gstatic.com/s/oxanium/v1/RrQQboN_4yJ0JmiMe2LE1A.ttf) format('truetype');
+}
+/* Global */
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  height: 2000px;
+  background: gray;
+  font: 18px/1.5 'Oxanium', sans-serif;
+}
+.container {
+  width: 88%;
+  margin: 0 auto;
+  max-width: 1920px;
+}
+.burger {
+  width: 45px;
+  height: inherit;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  display: none;
+}
+.burger .line1,
+.burger .line2,
+.burger .line3 {
+  width: inherit;
+  height: 4px;
+  background-color: white;
+  transition: background-color 0.5s;
+}
+.burger:hover {
+  cursor: pointer;
+}
+.burger:hover .line1,
+.burger:hover .line2,
+.burger:hover .line3 {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+/* End Global */
+header {
+  width: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 1.4em 0;
+  transition: padding 0.75s, background-color 1s;
+}
+header.change {
+  padding: 0.7em 0;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+header .container {
+  display: flex;
+  justify-content: space-between;
+}
+header .container .title {
+  display: flex;
+  font-size: 2em;
+  color: white;
+}
+header .container .nav {
+  display: flex;
+  align-items: center;
+}
+header .container .nav .item {
+  font-size: 1.25em;
+  margin-right: 2em;
+}
+header .container .nav .item:last-child {
+  margin-right: 0;
+}
+header .container .nav .item a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s;
+}
+header .container .nav .item a:hover {
+  color: rgba(255, 255, 255, 0.6);
+}
+@media (max-width: 900px) {
+  header .container {
+    display: block;
+  }
+  header .container .title {
+    display: flex;
+    justify-content: space-between;
+  }
+  header .container .title .burger {
+    display: flex;
+  }
+  header .container .nav {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+  }
+  header .container .nav .item {
+    font-size: 4.5vh;
+    text-align: center;
+    height: 0;
+    margin: 0;
+    opacity: 0;
+    transition: margin 1s, opacity 1s;
+  }
+  header .container .nav.open {
+    max-height: initial;
+  }
+  header .container .nav.open .item {
+    margin: 2em 0;
+    opacity: 1;
+  }
+  header .container .nav.open .item:last-child {
+    margin-bottom: 4em;
+  }
+}

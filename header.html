@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="title">
+                Title
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </div>
+            <div class="nav">
+                <div class="item"><a href="#">item</a></div>
+                <div class="item"><a href="#">item</a></div>
+                <div class="item"><a href="#">item</a></div>
+                <div class="item"><a href="#">item</a></div>
+            </div>
+        </div>
+    </header>
+
+    <script>
+        // Implement (click) if using Angular 
+        const header = document.querySelector('header');
+        const nav = document.querySelector('header .nav');
+        const burger = document.querySelector('.burger');
+
+        let isOpen = false;
+        burger.addEventListener('click', () => {
+            nav.classList.toggle('open');
+            isOpen = !isOpen;
+        });
+
+        // Closes when the user clicks on any area
+        nav.addEventListener('click', () => {
+            if(isOpen){
+                setTimeout(() => {
+                    nav.classList.remove('open');
+                }, 100);
+                isOpen = false;
+            }  
+        });
+
+        //Implement window:scroll if using Angular
+        let grow = false;
+        window.addEventListener('scroll', () => {
+            if(!grow && window.scrollY > 50) {
+                header.classList.add('change');
+                grow = true;
+            } else if(grow && window.scrollY < 50) {
+                header.classList.remove('change');
+                grow = false;
+            }
+        });
+    </script>
+</body>
+</html>
